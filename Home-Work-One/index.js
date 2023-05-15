@@ -31,8 +31,10 @@ console.log(employ._name)
 console.log(employ._age)
 console.log(employ._salary)
 class Programmer extends Employee {
-    constructor(lang, salary) {
-        super();
+    constructor(name, age, lang, salary) {
+        super(name, age);
+        this._name = name
+        this._age = age
         this._lang = lang
         this._salary = salary
     }
@@ -47,18 +49,26 @@ class Programmer extends Employee {
 
     }
 }
-const programmer = new Programmer(['Українська', 'Англійська', 'Венгерська', 'Іспанська',], 1000);
+const programmer = new Programmer('Vasya', 17, ['Українська', 'Англійська', 'Венгерська', 'Іспанська',], 1000);
 
+console.log(programmer._name)
+console.log(programmer._age)
 console.log(programmer._lang)
 console.log(programmer.salary)
 
-const programmerOne = new Programmer(['Українська', 'Англійська', 'Польська', 'Німецька',], 500);
+const programmerOne = new Programmer('Sergiy', 25,['Українська', 'Англійська', 'Польська', 'Німецька',], 500);
 
+console.log(programmerOne._name)
+console.log(programmerOne._age)
 console.log(programmerOne._lang)
 console.log(programmerOne.salary)
 
-const programmerTwo = new Programmer(['Українська', 'Португальська', 'Данська', 'Англійська',], 12000);
+const programmerTwo = new Programmer('Oleg', 34, ['Українська', 'Португальська', 'Данська', 'Англійська',], 12000);
 
+console.log(programmerTwo._name)
+console.log(programmerTwo._age)
 console.log(programmerTwo._lang)
 console.log(programmerTwo.salary)
+
+console.log(programmerTwo)
 
