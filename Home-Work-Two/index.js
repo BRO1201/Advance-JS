@@ -33,38 +33,50 @@ const books = [
 
 
 
-    class Iteam {
-        constructor(e) {
+class Iteam {
+    constructor(e) {
 
-            if ( e.author === undefined || e.name === undefined || e.price === undefined){
-                throw new InvalidError(e.author, e.name, e.price);
+        if ( e.author === undefined || e.name === undefined || e.price === undefined){
+            throw new InvalidError();
 
-            }
-
-            this.author = e.author;
-            this.name = e.name;
-            this.price = e.price;
         }
-        render(){
-            const div = document.querySelector('#root');
-            const list =    `<ul>
+
+        this.author = e.author;
+        this.name = e.name;
+        this.price = e.price;
+    }
+
+    validator(){
+        if (!Object.keys(this.author).includes('author')){
+            throw new InvalidError('author')
+        }else if (!Object.keys(this.name).includes('name')){
+            throw new InvalidError('name')
+        }else if (!Object.keys(this.price).includes('price')){
+            throw new InvalidError('price')
+        }
+    }
+    render(){
+        const div = document.querySelector('#root');
+        const list =    `<ul>
                                     <li>${this.author}</li>
                                     <li>${this.name}</li>
                                     <li>${this.price}</li>
                                 </ul> `
 
-            div.insertAdjacentHTML('beforeend',list);
-        }
-    }
+        div.insertAdjacentHTML('beforeend',list);
 
-    class InvalidError extends Error {
-        constructor(e) {
-            super(e);
-            this.names = 'InvalidError';
-            this.message = `InvalidError ${e} `;
-
-        }
+        this.validator()
     }
+}
+
+class InvalidError extends Error {
+    constructor(e) {
+        super();
+        this.names = 'InvalidError';
+        this.message = `InvalidError ${e} `;
+
+    }
+}
 
 books.forEach((e) => {
 
@@ -73,12 +85,14 @@ books.forEach((e) => {
         new Iteam(e).render();
 
     }catch (error) {
-            if (error.names === 'InvalidError'){
-                console.log(error)
-            }else{
-                throw error
-            }
+
+        if (error.names === 'InvalidError'){
+            console.log(error)
+        }else{
+            throw error
+        }
     }
 
 })
+
 
