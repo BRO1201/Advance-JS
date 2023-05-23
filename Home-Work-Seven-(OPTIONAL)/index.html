@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home-Work-Seven-(OPTIONAL)</title>
+  <script src="./index.js" defer></script>
+
+    <style>
+        table {
+            border-collapse: inherit;
+            margin: 5% auto;
+        }
+
+        td {
+            width: 30px;
+            height: 30px;
+            border: 1px solid black;
+            border-radius: 5px
+        ;
+        }
+        tr {
+            width: 30px;
+            height: 30px;
+            border: 1px solid black;
+        }
+
+        .list-level{
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+        }
+
+        .level{
+            color: aliceblue;
+            background: linear-gradient(129.54deg, #FF7B4E 15.57%, #FF584E 95.03%);
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 27px;
+            padding: 15px
+        ;
+        }
+
+        .list-points{
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+        }
+
+        .players{
+            padding: 15px;
+            background-color: #FF584E;
+            border-radius: 5px;
+            color: aliceblue;
+        }
+
+    </style>
+
+</head>
+<body>
+<ul class="list-level">
+    <li class="level level-one">Легкий</li>
+    <li class="level level-two">Середній</li>
+    <li class="level level-three">Важкий</li>
+</ul>
+<table id="myTable"></table>
+
+<ul class="list-points">
+    <li class="players one">Гравець <span class="one-players">0</span> </li>
+    <li class="players two">Компютер <span class="one-players">0</span> </li>
+</ul>
+</body>
+</html>
