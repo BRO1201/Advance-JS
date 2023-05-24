@@ -30,15 +30,17 @@ const books = [
     }
 ];
 
-
-
-
 class Iteam {
     constructor(e) {
 
-        if ( e.author === undefined || e.name === undefined || e.price === undefined){
-            throw new InvalidError();
-
+        if ( e.author === undefined){
+            throw new InvalidError('author');
+        }
+        if (e.name === undefined){
+            throw new InvalidError('name');
+        }
+        if (e.price === undefined){
+            throw new InvalidError('price');
         }
 
         this.author = e.author;
@@ -46,18 +48,10 @@ class Iteam {
         this.price = e.price;
     }
 
-    validator(){
-        if (!Object.keys(this.author).includes('author')){
-            throw new InvalidError('author')
-        }else if (!Object.keys(this.name).includes('name')){
-            throw new InvalidError('name')
-        }else if (!Object.keys(this.price).includes('price')){
-            throw new InvalidError('price')
-        }
-    }
-    render(){
+    render() {
+
         const div = document.querySelector('#root');
-        const list =    `<ul>
+        const list = `<ul>
                                     <li>${this.author}</li>
                                     <li>${this.name}</li>
                                     <li>${this.price}</li>
@@ -65,20 +59,20 @@ class Iteam {
 
         div.insertAdjacentHTML('beforeend',list);
 
-        this.validator()
     }
 }
 
 class InvalidError extends Error {
     constructor(e) {
         super();
-        this.names = 'InvalidError';
+        this.name = 'InvalidError';
         this.message = `InvalidError ${e} `;
 
     }
+
 }
 
-books.forEach((e) => {
+books.forEach( e => {
 
     try {
 
@@ -86,13 +80,13 @@ books.forEach((e) => {
 
     }catch (error) {
 
-        if (error.names === 'InvalidError'){
+        if (error.name === 'InvalidError'){
             console.log(error)
         }else{
             throw error
         }
     }
 
-})
+});
 
 
